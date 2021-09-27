@@ -41,6 +41,6 @@ get_initial_n <- function(params, n0_mult = NULL, a = 0.35) {
     #set densities at w > w_inf to 0
     initial_n[unlist(tapply(params@w,1:no_w,function(wx,w_inf) w_inf<wx, w_inf=params@species_params$w_inf))] <- 0
     # Also any densities at w < w_min set to 0
-    initial_n[unlist(tapply(params@w,1:no_w,function(wx,w_min)w_min>wx, w_min=params@species_params$w_min))] <- 0    
+    initial_n[unlist(tapply(params@w,1:no_w,function(wx,w_min)w_min>wx, w_min=params@w[params@w_min_idx]))] <- 0    
     return(initial_n)
 }
